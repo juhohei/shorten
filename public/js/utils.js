@@ -15,7 +15,7 @@ function POST(url, data, callback) {
 
 function showResult(data, inputElementId) {
   var el = document.getElementById(inputElementId);
-  el.value = document.URL + data;
+  el.value = document.location.host + '/' + data;
 }
 
 function preventDef(event) {
