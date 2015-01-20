@@ -30,23 +30,16 @@ Then navigate to `http://localhost:PORT` to use the GUI. Alternatively, you can 
 api
 ---
 
-**POST /shorten**
-
-**Parameters**: link (the link to shorten), if there's no protocol http:// is assumed.
-
-**Returns**: id for the shortened link (text/plain)
-
+**POST /shorten**  
+**Parameters**: link (the link to shorten), if there's no protocol http:// is assumed.  
+**Returns**: id for the shortened link (text/plain)  
 **curl example**: `curl -d 'link=example.com' localhost:3000/shorten`
 
 
-**GET /:id**
-
-**Redirects (GUI)**: to previously stored URL, 404's if there's no link with given id
-
-**OR**
-
-**Returns (CLI)**: previously stored URL, 'No URL for ID $id' if there's no link with given id
-
+**GET /:id**  
+**Redirects (GUI)**: to previously stored URL, 404's if there's no link with given id  
+**OR**  
+**Returns (CLI)**: previously stored URL, 'No URL for ID $id' if there's no link with given id  
 **curl example**: `curl localhost/id`
 
 adding database
