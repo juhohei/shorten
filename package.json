@@ -1,0 +1,32 @@
+{
+  "name": "shorten",
+  "version": "0.0.1",
+  "description": "simple url shortener",
+  "main": "index.js",
+  "scripts": {
+    "start": "iojs index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/juhohei/shorten"
+  },
+  "keywords": [
+    "url",
+    "shortener"
+  ],
+  "author": "Juho Heinisuo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juhohei/shorten/issues"
+  },
+  "homepage": "https://github.com/juhohei/shorten",
+  "dependencies": {
+    "co-body": "^1.0.0",
+    "koa": "^0.14.0",
+    "koa-route": "^2.4.0",
+    "koa-static": "^1.4.8"
+  },
+  "engines": {
+    "iojs": ">=1.0.0"
+  }
+}

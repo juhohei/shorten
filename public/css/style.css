@@ -1,0 +1,93 @@
+::selection {
+  background: #333;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #333;
+  color: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  max-height: 100%;
+  font-family: Antic Didone;
+}
+
+h1 {
+  font-size: 96px;
+  font-weight: 400;
+  color: #333;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 720px;
+  max-width: 90%;
+  border-radius: 4px;
+}
+
+.content {
+  margin: 15% 0;
+  width: 100%;
+}
+
+form {
+  padding: 20px 0;
+  display: block;
+  width: 100%;
+}
+
+input,
+button {
+  font-family: monospace;
+  font-size: 18px;
+}
+
+input {
+  width: 75%;
+  padding: 4px 8px;
+  height: 40px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  transition: border .2s ease-in-out;
+}
+
+input:hover {
+  border: 1px solid #999;
+  border-right: none;
+}
+
+button {
+  width: 25%;
+  height: 40px;
+  padding: 4px 8px;
+  background: #333;
+  color: #ccc;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  transition: color .2s ease-in-out;
+}
+
+button:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.result {
+  padding: 20px 0;
+  border-radius: 4px;
+}
+

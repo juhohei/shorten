@@ -1,0 +1,14 @@
+{
+  "globalstrict": true,
+  "noyield": true,
+  "validthis": true,
+  "esnext": true,
+  "globals": {
+    "require": false,
+    "module": false,
+    "exports": false,
+    "__dirname": false,
+    "console": false,
+    "process": false
+  }
+}
