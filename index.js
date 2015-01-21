@@ -1,13 +1,14 @@
 'use strict';
 
-const parse   = require('co-body');
-const koa     = require('koa');
-const serve   = require('koa-static');
-const router  = require('koa-route');
-const app     = koa();
+var parse  = require('co-body');
+var koa    = require('koa');
+var serve  = require('koa-static');
+var router = require('koa-route');
+var app    = koa();
 
-const Shortener = require('./lib/shortener');
-const Short     = new Shortener();
+var checkUrl  = require('./lib/checkurl');
+var Shortener = require('./lib/shortener');
+var Short     = new Shortener();
 
 const PORT = process.env.PORT || 3000;
 
@@ -24,18 +25,21 @@ function* redirect(id) {
 
   this.status = 301;
   this.redirect(url);
-  this.response.body = url;
+  this.set('Content-Type', 'text/plain; charset=utf-8');
+  this.body = url;
 }
 
 
 function* shorten() {
   let data = yield parse.form(this);
+  let link = data.link;
 
-  if (!data.link) return this.throw(`No parameter 'link' given`, 404);
+  if (!link) return this.throw(`No parameter 'link' given`, 404);
 
-  this.set('Content-Type', 'text/plain');
-  this.set('charset', 'utf-8');
-  this.body = Short.shorten(data.link);
+  link = checkUrl(link);
+  
+  this.set('Content-Type', 'text/plain; charset=utf-8');
+  this.body = Short.createOrFind(link);
 }
 
 

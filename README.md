@@ -1,7 +1,7 @@
 shorten
 ===
 
-Shorten is an `io.js` URL shortener powered by `koa.js`. It uses in-memory database (see [adding database](#adding database) for persistent memory).
+Shorten is an `io.js` URL shortener powered by `koa.js`. It uses in-memory database (see [adding database](#adding-database) for persistent memory).
 
 installation
 ---
@@ -39,8 +39,10 @@ api
 **GET /:id**  
 **Redirects (GUI)**: to previously stored URL, 404's if there's no link with given id  
 **OR**  
-**Returns (CLI)**: previously stored URL, 'No URL for ID $id' if there's no link with given id  
-**curl example**: `curl localhost/id`
+**Returns (CLI)**: previously stored URL (text/plain), 'No URL for ID $id' if there's no link with given id  
+**curl example**: `curl localhost:3000/id`
+
+Use `-i` option with `curl` to see the headers.
 
 adding database
 ---
@@ -50,7 +52,7 @@ TODO
 other
 ---
 
-The ids consist of 5 [a-zA-Z0-9]. They are generated randomly. See [idgenerator](lib/idgenerator.js) for comments.
+The ids consist of 5 [a-zA-Z0-9]. They are generated randomly. See [idgenerator](lib/idgenerator.js) for comments. Some sites, such as [ow.ly](http://ow.ly), seem to increment their id by one for each request (eg. AAAAA -> AAAAB -> AAAAC). That is a faster and more robust way; it prevents id collisions. Other sites, such as [goo.gl](http://goo.gl), seem to either use some kind of hash algorithm or generate random sequences.
 
 license
 ---

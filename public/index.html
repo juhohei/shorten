@@ -10,17 +10,15 @@
   <body>
     <div class="wrapper">
       <section class="content">
-        <center><h1>shorten</h1></center>
+        <h1>shorten</h1>
         <form>
           <input id="inField" type="text" placeholder="Paste your url here"><!-- remove space
        --><button id="inBut">shorten</button>
         </form>
-        <div class="result">
-          <form>
-            <input id="outField" type="text"><!-- again
-         --><button id="outBut">select</button>
-          </form>
-        </div>
+        <form>
+          <input id="outField" type="text"><!-- same here
+       --><button id="outBut">select</button>
+        </form>
       </section>
     </div>
     <script>
@@ -30,19 +28,16 @@ var outBut   = document.getElementById('outBut');
 var outField = document.getElementById('outField');
 
 inBut.addEventListener('click', function (e) {
-    preventDef(e);
-    var link = checkIfUrl(inField.value);
-    if (!link) {
-      alert('Provide an URL');
-      return;
-    }
-    POST('/shorten', 'link=' + link, function (data) {
-        showResult(data, 'outField');
+    utils.preventDefault(e);
+    var link = inField.value;
+    if (!link || !/^([0-9a-zA-Z.\/#!?$&\[\]_\-:;~@]|%[0-9a-fA-F]{2})+$/.test(link)) return;
+    utils.post('/shorten', 'link=' + inField.value, function (data) {
+        utils.showResult(data, outField);
     });
 });
 
 outBut.addEventListener('click', function (e) {
-  preventDef(e);
+  utils.preventDefault(e);
   outField.select();
 });
     </script>
