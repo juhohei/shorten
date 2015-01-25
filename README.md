@@ -3,17 +3,23 @@ shorten
 
 Shorten is an `io.js` URL shortener powered by `koa.js`. It uses in-memory database (see [adding database](#adding-database) for persistent memory).
 
-installation
+
+
+Installation
 ---
 
-You need to have `io.js` installed. See [iojs.org](https://iojs.org) for installation.
+You need to have `io.js >= 1.0.0` installed. See [iojs.org](https://iojs.org) for installation.
 
     $ git clone https://github.com/juhohei/shorten.git
     $ cd shorten
     $ npm install
 
-usage
+
+
+Usage 
 ---
+
+Check out [index.js](index.js#L13-24) for id generation algorithms to use. Then:
 
     $ npm start       # or
     $ iojs index.js   # or
@@ -25,9 +31,11 @@ You can specify a port to run the server on (default 3000):
     $ PORT=8080 iojs index.js
     $ sudo PORT=80 iojs index.js
 
-Then navigate to `http://localhost:PORT` to use the GUI. Alternatively, you can use tools such as `curl` (see [api](#api)). The GUI probably doesn't work on IE (at least older versions).
+Then either navigate to `http://localhost:PORT` or use tools such as `curl` (see [api](#api)). Doesn't probably work wth Internet Explorer.
 
-api
+
+
+API
 ---
 
 **POST /shorten**  
@@ -44,17 +52,9 @@ api
 
 Use `-i` option with `curl` to see the headers.
 
-adding database
----
 
-TODO
 
-other
----
-
-The ids consist of 5 [a-zA-Z0-9]. They are generated randomly. See [idgenerator](lib/idgenerator.js) for comments. Some sites, such as [ow.ly](http://ow.ly), seem to increment their id by one for each request (eg. AAAAA -> AAAAB -> AAAAC). That is a faster and more robust way; it prevents id collisions. Other sites, such as [goo.gl](http://goo.gl), seem to either use some kind of hash algorithm or generate random sequences.
-
-license
+License
 ---
 
 MIT

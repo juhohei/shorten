@@ -6,9 +6,22 @@ var serve  = require('koa-static');
 var router = require('koa-route');
 var app    = koa();
 
-var checkUrl  = require('./lib/checkurl');
-var Shortener = require('./lib/shortener');
-var Short     = new Shortener();
+var checkUrl     = require('./lib/checkurl');
+var idGenerators = require('./lib/idgenerators');
+var Shortener    = require('./lib/shortener');
+
+/*
+ * idGenerators provides idGenerators.random and idGenerators.incremental
+ *
+ * for your own alogorithm, pass a generator function to Shortener
+ * a trivial example:
+ *
+ * var Short = new Shortener(function* () {
+ *     let i = 0;
+ *     while (++i) yield i;
+ * });
+ */
+var Short = new Shortener(idGenerators.random);
 
 const PORT = process.env.PORT || 3000;
 
