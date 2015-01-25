@@ -3,6 +3,7 @@ shorten
 
 Shorten is an `io.js` URL shortener powered by `koa.js`. It uses in-memory database, though adding a proper database is straightforward.
 
+![example gif](shorten.gif)
 
 
 Installation
