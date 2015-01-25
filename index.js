@@ -32,27 +32,27 @@ app.use(router.post('/shorten', shorten));
 
 
 function* redirect(id) {
-  let url = Short.getUrl(id);
+    let url = Short.getUrl(id);
 
-  if (!url) return this.throw(`No URL for ID ${id}`, 404);
+    if (!url) return this.throw(`No URL for ID ${id}`, 404);
 
-  this.status = 301;
-  this.redirect(url);
-  this.set('Content-Type', 'text/plain; charset=utf-8');
-  this.body = url;
+    this.status = 301;
+    this.redirect(url);
+    this.set('Content-Type', 'text/plain; charset=utf-8');
+    this.body = url;
 }
 
 
 function* shorten() {
-  let data = yield parse.form(this);
-  let link = data.link;
+    let data = yield parse.form(this);
+    let link = data.link;
 
-  if (!link) return this.throw(`No parameter 'link' given`, 404);
+    if (!link) return this.throw(`No parameter 'link' given`, 404);
 
-  link = checkUrl(link);
+    link = checkUrl(link);
   
-  this.set('Content-Type', 'text/plain; charset=utf-8');
-  this.body = Short.createOrFind(link);
+    this.set('Content-Type', 'text/plain; charset=utf-8');
+    this.body = Short.createOrFind(link);
 }
 
 
