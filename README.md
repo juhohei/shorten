@@ -51,9 +51,7 @@ API
 
 
 **GET /:id**  
-**Redirects (GUI)**: to previously stored URL, 404's if there's no link with given id  
-**OR**  
-**Returns (CLI)**: previously stored URL (text/plain), 'No URL for ID $id' if there's no link with given id  
+**Redirects**: to previously stored URL, also returns the link for parsing; 404's if there's no link with given id
 **curl example**: `curl localhost:3000/id`
 
 Use `-i` option with `curl` to see the headers.
