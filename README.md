@@ -1,7 +1,7 @@
 shorten
 ===
 
-Shorten is an `io.js` URL shortener powered by `koa.js`. It uses in-memory database, though adding a proper database is straightforward.
+Shorten is an `io.js` URL shortener powered by `koa.js`. It uses in-memory database.
 
 ![example gif](shorten.gif)
 
@@ -37,7 +37,7 @@ $ PORT=8080 iojs index.js
 $ sudo PORT=80 iojs index.js
 ```
 
-Then either navigate to `http://localhost:PORT` or use tools such as `curl` (see [api](#api)). Doesn't probably work wth Internet Explorer.
+Then either navigate to `http://localhost:PORT` or use tools such as `curl` (see [api](#api)). Doesn't work with <= IE6.
 
 
 
