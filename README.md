@@ -1,7 +1,7 @@
 shorten
 ===
 
-Shorten is an `io.js` URL shortener powered by `koa.js`. It uses in-memory database.
+Shorten is an `io.js` URL shortener powered by `koa.js`, with a JSON "dataase".
 
 ![example gif](shorten.gif)
 
@@ -39,20 +39,21 @@ $ sudo PORT=80 iojs index.js
 
 Then either navigate to `http://localhost:PORT` or use tools such as `curl` (see [api](#api)). Doesn't work with <= IE6.
 
+To specify a custom id for your link, insert a space followed by your id after the url. Example: `example.com ex -> localhost:3000/ex`.
 
 
 API
 ---
 
 **POST /shorten**  
-**Parameters**: link (the link to shorten), if there's no protocol http:// is assumed.  
+**Parameters**: link (the link to shorten) [, custom (custom id)], if there's no protocol http:// is assumed.  
 **Returns**: id for the shortened link (text/plain)  
-**curl example**: `curl -d 'link=example.com' localhost:3000/shorten`
+**curl example**: `curl -d 'link=example.com&custom=ex' localhost:3000/shorten`
 
 
 **GET /:id**  
 **Redirects**: to previously stored URL, also returns the link for parsing; 404's if there's no link with given id
-**curl example**: `curl localhost:3000/id`
+**curl example**: `curl localhost:3000/ex`
 
 Use `-i` option with `curl` to see the headers.
 
