@@ -29,10 +29,12 @@ var outField = document.getElementById('outField');
 
 inBut.addEventListener('click', function (e) {
     utils.preventDefault(e);
-    var link = inField.value;
-    if (!link || !/^([0-9a-zA-Z.\/#!?$&\[\]_\-:;~@]|%[0-9a-fA-F]{2})+$/.test(link)) return;
-    utils.post('/shorten', 'link=' + inField.value, function (data) {
-        utils.showResult(data, outField);
+    var url = inField.value.split(' ');
+    var data = 'link=' + url[0];
+    data += url[1] ? '&custom=' + url[1] : '';
+    if (!data[0] || !/^([0-9a-zA-Z.\/#!?$&\[\]_\-:;~@]|%[0-9a-fA-F]{2})+$/.test(data[0])) return;
+    utils.post('/shorten', data, function (result) {
+        utils.showResult(result, outField);
     });
 });
 

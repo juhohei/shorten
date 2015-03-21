@@ -44,15 +44,16 @@ function* redirect(id) {
 
 
 function* shorten() {
-    let data = yield parse.form(this);
-    let link = data.link;
+    let data   = yield parse.form(this);
+    let link   = data.link;
+    let custom = data.custom || ''; 
 
     if (!link) return this.throw(`No parameter 'link' given`, 404);
 
     link = checkUrl(link);
   
     this.set('Content-Type', 'text/plain; charset=utf-8');
-    this.body = Short.createOrFind(link);
+    this.body = Short.createOrFind(link, custom);
 }
 
 
